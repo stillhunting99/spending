@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
+<title>Spending Log</title>
+<meta name="description" content="Shared household spending log">
+
+<!-- installs to the iPhone home screen as a real app -->
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Spending">
+<meta name="theme-color" content="#EDF1F2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F161B" media="(prefers-color-scheme: dark)">
+
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+
+<!-- ===================== first run: who are you? ===================== -->
+<div class="gate" id="gate" hidden>
+  <div class="gate-in">
+    <div class="gate-mark" aria-hidden="true"><i></i><i></i><i></i></div>
+    <h1 class="rounded">Who's using this phone?</h1>
+    <p>So you can each see who logged what. You can change it later in History.</p>
+    <div class="gate-btns" id="gateBtns"></div>
+  </div>
+</div>
+
+<!-- ===================== setup not finished ===================== -->
+<div class="gate" id="setup" hidden>
+  <div class="gate-in">
+    <div class="gate-mark warn" aria-hidden="true"><i></i><i></i><i></i></div>
+    <h1 class="rounded">Almost there</h1>
+    <p id="setupMsg">Open <code>config.js</code> and paste in your Supabase project
+       URL and anon key, then reload. Full steps are in <code>SETUP.md</code>.</p>
+  </div>
+</div>
+
+<!-- ===================== opened without the link ===================== -->
+<div class="gate" id="nolink" hidden>
+  <div class="gate-in">
+    <div class="gate-mark warn" aria-hidden="true"><i></i><i></i><i></i></div>
+    <h1 class="rounded">Use the full link</h1>
+    <p>This page needs the private household link to know whose spending to show.
+       Ask Aymon to text it to you again, then open it from the message.</p>
+  </div>
+</div>
+
+<!-- ===================== app ===================== -->
+<div class="app" id="app" hidden>
+  <header class="hdr">
+    <div class="hdr-top">
+      <span class="hdr-label">Left to spend</span>
+      <button class="sync" id="sync" type="button" aria-live="polite">
+        <span class="sync-dot"></span><span id="syncTxt">Syncing…</span>
+      </button>
+    </div>
+    <div class="hdr-amt rounded" id="hdrAmt">$0</div>
+    <div class="hdr-sub" id="hdrSub"></div>
+    <div class="hdr-bar"><i id="hdrBar" style="width:0%"></i></div>
+  </header>
+
+  <main>
+    <!-- ---------------- log ---------------- -->
+    <section class="pane on" id="pane-log">
+      <div class="amt-box">
+        <div class="amt-val rounded zero" id="amtVal">$0</div>
+        <div class="amt-hint" id="amtHint">Tap an amount, pick a category</div>
+      </div>
+
+      <div class="chips" id="chips"></div>
+
+      <input class="note-in" id="note" type="text" inputmode="text" hidden
+             placeholder="What did you buy?" maxlength="60" autocomplete="off">
+
+      <div class="pad" id="pad"></div>
+      <div class="act">
+        <button class="note-tog" id="noteTog" type="button" aria-expanded="false">+ note</button>
+        <button class="save rounded" id="save" type="button" disabled>Log it</button>
+      </div>
+    </section>
+
+    <!-- ---------------- month ---------------- -->
+    <section class="pane" id="pane-month">
+      <div class="mnav">
+        <button id="mPrev" type="button" aria-label="Previous month">&lsaquo;</button>
+        <h2 class="rounded" id="mTitle"></h2>
+        <button id="mNext" type="button" aria-label="Next month">&rsaquo;</button>
+      </div>
+
+      <div class="split" id="split"></div>
+
+      <div class="card" id="mList"></div>
+
+      <div class="tot"><span>Logged this month</span><b class="rounded mono" id="mTot">$0</b></div>
+      <div class="tot sub"><span>Target for these</span><b class="mono" id="mBud">$0</b></div>
+      <div class="tot sub"><span>Autopay bills on top</span><b class="mono" id="mFix">$0</b></div>
+    </section>
+
+    <!-- ---------------- history ---------------- -->
+    <section class="pane" id="pane-hist">
+      <div id="histList"></div>
+      <button class="ghost" id="export" type="button">Export as spreadsheet</button>
+      <button class="ghost" id="share" type="button">Send the link to the other phone</button>
+      <button class="ghost" id="switch" type="button">Not <span id="whoAmI">—</span>? Switch</button>
+    </section>
+  </main>
+
+  <nav class="tabs">
+    <div class="tabs-in">
+      <button class="tab on" type="button" data-tab="log">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>Log</span>
+      </button>
+      <button class="tab" type="button" data-tab="month">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg><span>Month</span>
+      </button>
+      <button class="tab" type="button" data-tab="hist">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg><span>History</span>
+      </button>
+    </div>
+  </nav>
+</div>
+
+<div class="toast rounded" id="toast" role="status"></div>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
