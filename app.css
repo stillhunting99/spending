@@ -235,3 +235,14 @@ main{flex:1;padding:12px 18px 128px}
 .tab svg{width:23px;height:23px;stroke:currentColor;fill:none;stroke-width:1.8;
   stroke-linecap:round;stroke-linejoin:round}
 .tab.on{color:var(--poppy)}
+
+/* ---- share panel ---- */
+.sharebox{margin:10px 0 0;padding:16px;background:var(--card);border-radius:var(--r);
+  box-shadow:var(--shadow)}
+.sharebox p{margin:0 0 10px;font-size:13.5px;line-height:1.5;color:var(--dim)}
+.sharebox input{width:100%;box-sizing:border-box;padding:12px 14px;border:1px solid var(--line);
+  border-radius:12px;background:var(--bg);color:var(--ink);font:500 13px/1.4 var(--mono);
+  -webkit-user-select:all;user-select:all}
+.sharecopy{width:100%;margin-top:10px;padding:14px;border:0;border-radius:12px;
+  background:var(--accent);color:#fff;font:600 16px/1 var(--sans);cursor:pointer}
+.sharecopy:active{transform:scale(.985)}

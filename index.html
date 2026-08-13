@@ -99,14 +99,19 @@
 
       <div class="tot"><span>Logged this month</span><b class="rounded mono" id="mTot">$0</b></div>
       <div class="tot sub"><span>Target for these</span><b class="mono" id="mBud">$0</b></div>
-      <div class="tot sub"><span>Autopay bills on top</span><b class="mono" id="mFix">$0</b></div>
+      <div class="tot sub"><span>Bills &amp; daycare on top</span><b class="mono" id="mFix">$0</b></div>
     </section>
 
     <!-- ---------------- history ---------------- -->
     <section class="pane" id="pane-hist">
       <div id="histList"></div>
       <button class="ghost" id="export" type="button">Export as spreadsheet</button>
-      <button class="ghost" id="share" type="button">Send the link to the other phone</button>
+      <button class="ghost" id="share" type="button"><span id="shareTxt">Send this app to the other phone</span></button>
+      <div class="sharebox" id="shareBox" hidden>
+        <p>Text or email this whole link &mdash; it only works with the part after the <b>#</b> included.</p>
+        <input id="shareLink" type="text" readonly onclick="this.select()">
+        <button class="sharecopy" id="shareCopy" type="button">Copy link</button>
+      </div>
       <button class="ghost" id="switch" type="button">Not <span id="whoAmI">—</span>? Switch</button>
     </section>
   </main>

@@ -307,6 +307,9 @@ function dayLabel(iso) {
 }
 function drawHist() {
   $("#whoAmI").textContent = person || "—";
+  var other = (C.PEOPLE || []).filter(function (n) { return n !== person; })[0];
+  $("#shareTxt").textContent = other ? "Send this app to " + other
+                                     : "Send this app to the other phone";
   var box = $("#histList"), rows = all();
   if (!rows.length) {
     box.innerHTML = '<div class="empty"><div class="big rounded">Nothing logged yet</div>' +
@@ -341,16 +344,36 @@ $("#histList").addEventListener("click", function (e) {
   store(LS_QUEUE, queue);
   drawAll(); toast("Removed"); flush();
 });
+function shareLink() {
+  return location.origin + location.pathname + "#h=" + HOUSE;
+}
+function shareMessage() {
+  var other = (C.PEOPLE || []).filter(function (n) { return n !== person; })[0] || "you";
+  return "Here's our spending tracker \u2014 it's already set up for " + other + ".\n\n" +
+         shareLink() + "\n\n" +
+         "Open that in Safari, tap your name, then tap the Share button at the bottom " +
+         "and \"Add to Home Screen\" so it's an icon on your phone.\n\n" +
+         "When you buy something: tap the amount, tap what it was, tap Log it.";
+}
+
+/* Always reveal the link, THEN try the share sheet. If the sheet doesn't open
+   (or gets dismissed) there is still something on screen to copy. */
 $("#share").addEventListener("click", function () {
-  var link = location.origin + location.pathname + "#h=" + HOUSE;
-  if (navigator.share) {
-    navigator.share({ title: "Spending Log", url: link }).catch(function () {});
-  } else if (navigator.clipboard) {
-    navigator.clipboard.writeText(link)
+  $("#shareLink").value = shareLink();
+  $("#shareBox").hidden = false;
+  if (navigator.share) navigator.share({ text: shareMessage() }).catch(function () {});
+});
+
+$("#shareCopy").addEventListener("click", function () {
+  var el = $("#shareLink");
+  el.focus(); el.setSelectionRange(0, el.value.length);
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(el.value)
       .then(function () { toast("Link copied"); })
-      .catch(function () { window.prompt("Copy this link:", link); });
+      .catch(function () { toast("Press and hold to copy"); });
   } else {
-    window.prompt("Copy this link:", link);
+    try { document.execCommand("copy"); toast("Link copied"); }
+    catch (e) { toast("Press and hold to copy"); }
   }
 });
 

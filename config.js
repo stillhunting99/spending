@@ -47,5 +47,8 @@ window.CONFIG = {
 
   // Autopay bills that live outside this app, shown for context so the
   // numbers reconcile with the plan. 2,932 logged + 793 fixed = 3,725/mo.
-  FIXED_BILLS: 793
+  // Fixed monthly commitments that are NOT tapped in here:
+  //   $793  autopay bills (utilities, phone/internet, insurance, subscriptions)
+  // + $1,800 Waldorf daycare for Ayah + Nora, Mon/Tue, paid by Venmo
+  FIXED_BILLS: 2593
 };
