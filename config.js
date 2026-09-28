@@ -25,30 +25,31 @@ window.CONFIG = {
   // 4) Who uses this. The app asks which one you are the first time it opens.
   PEOPLE: ["Aymon", "Kellie"],
 
-  // 5) Monthly targets, from your spending plan (SPENDING-CUT-PLAN.md).
+  // 5) Monthly targets: the $5,000-a-month everyday plan (Circle Drive Plan, Sep 2026).
   //    Edit any number here and both phones pick it up.
   //    These twelve are the things you actually tap in as you spend.
-  //    Autopay bills (rent, insurance, phone, utilities, subscriptions)
-  //    are NOT logged here — they're the FIXED_BILLS figure below.
+  //    Autopay bills are NOT logged here; they're the FIXED_BILLS figure below.
   CATEGORIES: [
-    { key: "groceries",   name: "Groceries",  budget: 700 },
-    { key: "restaurants", name: "Eating out", budget: 600 },
-    { key: "gas",         name: "Gas",        budget: 300 },
-    { key: "shopping",    name: "Shopping",   budget: 450 },
-    { key: "health",      name: "Health",     budget: 250 },
-    { key: "auto",        name: "Car",        budget: 200 },
-    { key: "other",       name: "Other",      budget: 120 },
-    { key: "kids",        name: "Kids",       budget: 100 },
-    { key: "household",   name: "Household",  budget:  87 },
-    { key: "clothing",    name: "Clothes",    budget:  75 },
-    { key: "hobbies",     name: "Fun",        budget:  50 },
-    { key: "travel",      name: "Travel",     budget:   0 }
+    { key: "groceries",   name: "Groceries + Costco", budget: 900 },
+    { key: "shopping",    name: "Target/Amazon",      budget: 500 },
+    { key: "restaurants", name: "Eating out",         budget: 400 },
+    { key: "gas",         name: "Gas",                budget: 300 },
+    { key: "household",   name: "House upkeep",       budget: 250 },
+    { key: "health",      name: "Health",             budget: 150 },
+    { key: "auto",        name: "Car",                budget: 150 },
+    { key: "kids",        name: "Kids",               budget: 150 },
+    { key: "hobbies",     name: "Fun",                budget: 150 },
+    { key: "other",       name: "Gifts & other",      budget: 140 },
+    { key: "clothing",    name: "Clothes & hair",     budget: 100 },
+    { key: "travel",      name: "Travel",             budget:   0 }
   ],
 
-  // Autopay bills that live outside this app, shown for context so the
-  // numbers reconcile with the plan. 2,932 logged + 793 fixed = 3,725/mo.
-  // Fixed monthly commitments that are NOT tapped in here:
-  //   $793  autopay bills (utilities, phone/internet, insurance, subscriptions)
-  // + $1,800 Waldorf daycare for Ayah + Nora, Mon/Tue, paid by Venmo
-  FIXED_BILLS: 2593
+  // Fixed monthly commitments that are NOT tapped in here (shown for context):
+  //   $1,190 autopay bills: utilities 470, internet + phone 195, insurance 191,
+  //          subscriptions 200, Amex annual-fee fund 134
+  // + $1,800 Waldorf daycare for Ayah + Nora (Venmo)
+  // +   $311 house cleaner (~2 x $150 checks)
+  // The $5,000 everyday plan = 3,190 tapped in + 1,190 autopay + 620 buffer (unused -> SoFi).
+  // Rent / mortgage and any loan payment are separate and not counted here.
+  FIXED_BILLS: 3301
 };
