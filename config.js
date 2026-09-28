@@ -30,26 +30,26 @@ window.CONFIG = {
   //    These twelve are the things you actually tap in as you spend.
   //    Autopay bills are NOT logged here; they're the FIXED_BILLS figure below.
   CATEGORIES: [
-    { key: "groceries",   name: "Groceries + Costco", budget: 900 },
-    { key: "shopping",    name: "Target/Amazon",      budget: 500 },
-    { key: "restaurants", name: "Eating out",         budget: 400 },
-    { key: "gas",         name: "Gas",                budget: 300 },
-    { key: "household",   name: "House upkeep",       budget: 250 },
-    { key: "health",      name: "Health",             budget: 150 },
-    { key: "auto",        name: "Car",                budget: 150 },
-    { key: "kids",        name: "Kids",               budget: 150 },
-    { key: "hobbies",     name: "Fun",                budget: 150 },
-    { key: "other",       name: "Gifts & other",      budget: 140 },
-    { key: "clothing",    name: "Clothes & hair",     budget: 100 },
-    { key: "travel",      name: "Travel",             budget:   0 }
+    { key: "groceries",   name: "Groceries + Costco",         budget: 1000 },
+    { key: "restaurants", name: "Eating out",                 budget:  850 },
+    { key: "shopping",    name: "Target/Amazon",              budget:  650 },
+    { key: "gas",         name: "Gas",                        budget:  275 },
+    { key: "hobbies",     name: "Fun (golf, drinks, events)", budget:  200 },
+    { key: "health",      name: "Health",                     budget:  150 },
+    { key: "household",   name: "House stuff",                budget:  150 },
+    { key: "kids",        name: "Kids",                       budget:  150 },
+    { key: "clothing",    name: "Clothes & hair",             budget:  150 },
+    { key: "travel",      name: "Travel (cash part)",         budget:  150 },
+    { key: "auto",        name: "Car (tolls, parking, Uber)", budget:  150 },
+    { key: "other",       name: "Gifts & other",              budget:  125 }
   ],
 
   // Fixed monthly commitments that are NOT tapped in here (shown for context):
-  //   $1,190 autopay bills: utilities 470, internet + phone 195, insurance 191,
-  //          subscriptions 200, Amex annual-fee fund 134
+  //   $1,762 autopay bills + set-asides (utilities, insurance, subscriptions, phone/internet, gym,
+  //          car repairs, home repairs, Amex fees, medical) — see the Our Budget page
   // + $1,800 Waldorf daycare for Ayah + Nora (Venmo)
   // +   $311 house cleaner (~2 x $150 checks)
-  // The $5,000 everyday plan = 3,190 tapped in + 1,190 autopay + 620 buffer (unused -> SoFi).
+  // Everyday budget = 4,000 tapped in + 1,762 autopay/set-asides = 5,762/mo (built from 12 months of real spending).
   // Rent / mortgage and any loan payment are separate and not counted here.
-  FIXED_BILLS: 3301
+  FIXED_BILLS: 3873
 };
