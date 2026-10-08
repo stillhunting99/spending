@@ -31,17 +31,17 @@ window.CONFIG = {
   //    Autopay bills are NOT logged here; they're the FIXED_BILLS figure below.
   CATEGORIES: [
     { key: "groceries",   name: "Groceries + Costco",         budget: 1000 },
-    { key: "restaurants", name: "Eating out",                 budget:  850 },
-    { key: "shopping",    name: "Target/Amazon",              budget:  650 },
-    { key: "gas",         name: "Gas",                        budget:  275 },
-    { key: "hobbies",     name: "Fun (golf, drinks, events)", budget:  200 },
-    { key: "health",      name: "Health",                     budget:  150 },
-    { key: "household",   name: "House stuff",                budget:  150 },
-    { key: "kids",        name: "Kids",                       budget:  150 },
-    { key: "clothing",    name: "Clothes & hair",             budget:  150 },
-    { key: "travel",      name: "Travel (cash part)",         budget:  150 },
-    { key: "auto",        name: "Car (tolls, parking, Uber)", budget:  150 },
-    { key: "other",       name: "Gifts & other",              budget:  125 }
+    { key: "restaurants", name: "Eating out",                 budget:   400 },
+    { key: "shopping",    name: "Target/Amazon",              budget:   650 },
+    { key: "gas",         name: "Gas",                        budget:   275 },
+    { key: "hobbies",     name: "Fun (golf, drinks, events)", budget:   150 },
+    { key: "health",      name: "Health",                     budget:   125 },
+    { key: "household",   name: "House stuff",                budget:   150 },
+    { key: "kids",        name: "Kids",                       budget:   150 },
+    { key: "clothing",    name: "Clothes & hair",             budget:   125 },
+    { key: "travel",      name: "Travel (cash part)",         budget:   250 },
+    { key: "auto",        name: "Car (tolls, parking, Uber)", budget:    75 },
+    { key: "other",       name: "Gifts & other",              budget:   150 }
   ],
 
   // Fixed monthly commitments that are NOT tapped in here (shown for context):
@@ -49,7 +49,8 @@ window.CONFIG = {
   //          car repairs, home repairs, Amex fees, medical) — see the Our Budget page
   // + $1,800 Waldorf daycare for Ayah + Nora (Venmo)
   // +   $311 house cleaner (~2 x $150 checks)
-  // Everyday budget = 4,000 tapped in + 1,762 autopay/set-asides = 5,762/mo (built from 12 months of real spending).
+  // Everyday budget = 3,500 tapped in (matches the Command Center: ~$3,000 on the Platinum + ~$500 at Costco),
+  // + 1,762 autopay/set-asides = 5,262/mo. Tightened 2026-10-07 from 4,000.
   // Rent / mortgage and any loan payment are separate and not counted here.
   FIXED_BILLS: 3873
 };
